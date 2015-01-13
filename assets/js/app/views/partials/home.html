@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="container">
+    <h1>Home partial view</h1>
 
-</body>
-</html>
+    <div class="bricks-wrap">
+
+        <div class="brick-wrap" data-ng-repeat="brick in bricks">
+            <a href="#/user/{{ brick.id }}">
+                <img src="{{ brick.img }}">
+                <p>{{ brick.name }}</p>
+                <p>{{ brick.city }}</p>
+            </a>
+        </div><!-- /.brick-wrap -->
+
+    </div><!-- /.bricks-wrap -->
+
+</div><!-- /.container -->
