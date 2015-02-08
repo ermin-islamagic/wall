@@ -170,6 +170,10 @@ controllers.homeController = function($scope, bricksFactory){
             { id: $scope.count+9, name: 'Troll Doe', image: 'http://placehold.it/120x120', width: 120, height: 120, city: 'New York', hits: 30, color: "#00d7d7" }];
 
         $(genItems).each(function(i,e){
+
+            /*
+            * @todo should do something about this
+            * */
             $scope.$apply($scope.bricks.push(e));
         })
 
