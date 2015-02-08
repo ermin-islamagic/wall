@@ -156,7 +156,7 @@ controllers.homeController = function($scope, bricksFactory){
 
     $scope.addMoreItems = function(){
 
-        $scope.count = $scope.count || 0;
+        $scope.count = $scope.length || 0;
 
         var genItems = [
             { id: $scope.count+1, name: 'John Doe', image: 'http://placehold.it/120x120', width: 120, height: 120, city: 'New York', hits: 30, color: "#ffa600" },
@@ -169,14 +169,10 @@ controllers.homeController = function($scope, bricksFactory){
             { id: $scope.count+8, name: 'Jane Doe', image: 'http://placehold.it/120x120', width: 120, height: 120, city: 'New York', hits: 30, color: "#eb0000" },
             { id: $scope.count+9, name: 'Troll Doe', image: 'http://placehold.it/120x120', width: 120, height: 120, city: 'New York', hits: 30, color: "#00d7d7" }];
 
-        $(genItems).each(function(i,e){
 
-            /*
-            * @todo should do something about this
-            * */
-            $scope.$apply($scope.bricks.push(e));
-        })
-
+        for(var i = 0; i < genItems.length; i++) {
+            $scope.bricks.push(genItems[i]);
+        }
     }
 
     init();
@@ -197,7 +193,7 @@ wallApp.directive('resize', function ($window) {
             };
         };
 
-        scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
+        scope.$watch(scope.getWindowDimensions, function () {
 
             scope.elementsPerRow = Math.floor( (angular.element(element[0]).width() - (scope.bricks[0].width / 2)) / scope.bricks[0].width);
             scope.breakEveryRowAt = (scope.elementsPerRow * 2) + "n-" + (scope.elementsPerRow - 1);
