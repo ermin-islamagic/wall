@@ -2,7 +2,7 @@
  * Created by Ermin Islamagic on 13.1.2015.
  */
 
-var wallApp = angular.module('wallApp', ['ngRoute','ngSanitize','infinite-scroll']); //, 'ui.bootstrap'
+var wallApp = angular.module('wallApp', ['ngRoute','ngSanitize','infinite-scroll','ui.bootstrap']);
 var controllers = {};
 
 wallApp.factory('bricksFactory', function(){
@@ -147,7 +147,7 @@ wallApp.factory('bricksFactory', function(){
     return factory;
 })
 
-controllers.homeController = function($scope, bricksFactory){
+controllers.homeController = function($scope, bricksFactory, $log){
     $scope.bricks = [];
 
     function init(){
