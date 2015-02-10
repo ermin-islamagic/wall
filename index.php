@@ -52,10 +52,7 @@
     <script src="assets/js/app/module/angular-route.min.js"></script>
     <script src="assets/js/app/module/angular-sanitize.min.js"></script>
     <script src="assets/js/app/module/ng-infinite-scroll.min.js"></script>
-<!--    <script src="assets/js/app/module/ui-bootstrap-tpls-0.12.0.min.js"></script>-->
-<!--    <script src="assets/js/isotope.pkgd.js"></script>-->
-<!--    <script src="assets/js/jquery.isotope.js"></script>-->
-<!--    <script src="assets/js/angular-isotope.min.js"></script>-->
+    <script src="assets/js/app/module/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="assets/js/app/app.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>
