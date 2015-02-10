@@ -181,8 +181,7 @@ controllers.homeController = function($scope, bricksFactory, $log){
 wallApp.directive('resize', function ($window) {
     return function (scope, element) {
 
-        scope.elementsPerRow = 0;
-        scope.breakEveryRowAt = "";
+        scope.elementsOnFirstRow = 0;
 
         var w = angular.element($window);
 
@@ -195,18 +194,21 @@ wallApp.directive('resize', function ($window) {
 
         scope.$watch(scope.getWindowDimensions, function () {
 
-            scope.elementsPerRow = Math.floor( (angular.element(element[0]).width() - (scope.bricks[0].width / 2)) / scope.bricks[0].width);
-            scope.breakEveryRowAt = (scope.elementsPerRow * 2) + "n-" + (scope.elementsPerRow - 1);
+            scope.elementsOnFirstRow = Math.round( (angular.element(element[0]).width() - (scope.bricks[0].width / 2)) / scope.bricks[0].width);
+
+            scope.breakLeftRowAt = ((scope.elementsOnFirstRow * 2) - 1 ) + "n-" + (scope.elementsOnFirstRow - 2);
+            scope.breakRightRowAt = ((scope.elementsOnFirstRow * 2) - 1 ) + "n-" + ((scope.elementsOnFirstRow  * 2) - 1);
 
             // first init
-            scope.hexagonCellOrder ='.cell-wrap:nth-child(' + scope.breakEveryRowAt + '){ margin-left: ' + (scope.bricks[0].width / 2) + 'px; }';
+            scope.hexagonCellOrder = '.cell-wrap:nth-child(' + scope.breakLeftRowAt + '){ margin-left: ' + (scope.bricks[0].width / 2) + 'px; } ' +
+            '.cell-wrap:nth-child(' + scope.breakRightRowAt + '){ margin-right: ' + (scope.bricks[0].width / 2) + 'px; }';
 
         }, true);
 
         w.bind('resize', function () {
             // on resize
-
-            scope.hexagonCellOrder ='.cell-wrap:nth-child(' + scope.breakEveryRowAt + '){ margin-left: ' + (scope.bricks[0].width / 2) + 'px; }';
+            scope.hexagonCellOrder = '.cell-wrap:nth-child(' + scope.breakLeftRowAt + '){ margin-left: ' + (scope.bricks[0].width / 2) + 'px; } ' +
+            '.cell-wrap:nth-child(' + scope.breakRightRowAt + '){ margin-right: ' + (scope.bricks[0].width / 2) + 'px; }';
             scope.$apply();
         });
 
